@@ -108,25 +108,20 @@ grunt.initConfig({
 			}
 		},
 
-	    // FILEREV
-	    filerev: {
-	        options: {
-	            encoding: 'utf8',
-	            algorithm: 'md5',
-	            length: 20
-	        },
-	        release: {
-	            // filerev:release hashes(md5) all assets (images, js and css )
-	            // in dist directory
-	            files: [{
-	                src: [
-	                    'dist/js/*.js',
-	                    'dist/css/*.css'	                    
-	                ]
-	            }]
-	        }
-	    },
-
+		//PROCESS HTML
+		processhtml:{
+			options: {
+			      data: {
+			        message: 'Hello world!'
+			      }
+			 },
+			//target
+			html:{      
+				files: {
+				        'dist/index.html': ['./app/index.html']
+				      }
+			}
+		},
 
 	    //IMAGE-MIN
 	     imagemin:{
@@ -200,8 +195,8 @@ grunt.registerTask('build', [
 		'cssmin',
 		'uglify',
 		'copy',
-		'filerev',
 		'imagemin',
+		'processhtml',
 		'clean:final_clean'
 ]);
 
@@ -220,7 +215,7 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-postcss');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-connect');
-grunt.loadNpmTasks('grunt-filerev');
 grunt.loadNpmTasks('grunt-contrib-imagemin');
+grunt.loadNpmTasks('grunt-processhtml');
 
 };
