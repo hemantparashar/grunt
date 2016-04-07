@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt){
 
 //time grunt module - shows time taken to process by the grunt tasks
@@ -110,11 +112,6 @@ grunt.initConfig({
 
 		//PROCESS HTML
 		processhtml:{
-			options: {
-			      data: {
-			        message: 'Hello world!'
-			      }
-			 },
 			//target
 			html:{      
 				files: {
@@ -150,13 +147,18 @@ grunt.initConfig({
 			//JS target
 			js:{
 				files:['./app/js/*.js'],
-				tasks:['build']
+				tasks:['js']
 			},
 
 			//CSS target
 			css:{
 				files:['./app/css/*.css'],
-				tasks:['build']
+				tasks:['css']
+			},
+
+			html:{
+				files:['./app/**/*.html'],
+				tasks:['html']
 			},
 			
 		},
@@ -203,6 +205,9 @@ grunt.registerTask('build', [
 
 grunt.registerTask('serve',['build','connect:dist','watch']);
 grunt.registerTask('default',['build']);
+grunt.registerTask('css',['concat:css','postcss','cssmin']);
+grunt.registerTask('js',['jshint','concat:js','jshint','uglify']);
+grunt.registerTask('html',['processhtml']);
 
 
 //load Modules
