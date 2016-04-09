@@ -177,14 +177,12 @@ grunt.initConfig({
 		          base:{
 		            path: 'dist',
 		            options: {
-		                index: 'index.html',
-		                // maxAge: 300000
+		                index: 'index.html'
 		            }
 		          }
 		        }
 		    }
 		},
-
 
 
 });// end grunt config
@@ -216,11 +214,12 @@ grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-uglify');
-grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-postcss');
-grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.loadNpmTasks('grunt-contrib-connect');
+grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-imagemin');
 grunt.loadNpmTasks('grunt-processhtml');
+grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-contrib-connect');
+
 
 };
